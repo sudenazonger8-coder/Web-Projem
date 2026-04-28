@@ -1,0 +1,51 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern ve okunaklı bir yazı tipi */
+    background-color: #f4f7f6; /* Gözü yormayan hafif gri bir arka plan */
+    color: #333; /* Ana yazı rengi (tam siyah değil, daha yumuşak) */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Her şeyi yatayda ortala */
+    min-height: 100vh; /* En az ekran boyu kadar yükseklik */
+    justify-content: center; /* Her şeyi dikeyde de ortala */
+}
+
+/* 2. Ana başlık (Hoşgeldin) ayarları */
+h1 {
+    color: #2c3e50; /* Koyu lacivert, profesyonel bir renk */
+    font-size: 3rem; /* Başlığı büyüt */
+    margin-bottom: 10px; /* Alttaki menüyle arasını aç */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Hafif gölge ile derinlik ver */
+}
+
+/* 3. Menü (Navigasyon) çubuğu ayarları */
+nav {
+    background-color: #fff; /* Menü arka planı beyaz olsun */
+    padding: 15px 30px; /* İçeriden boşluk ver */
+    border-radius: 50px; /* Köşeleri tam yuvarla (oval menü) */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Hafif gölge ile havada duruyormuş gibi yap */
+    margin-bottom: 20px; /* Alttaki metinle arasını aç */
+}
+
+/* 4. Menü içindeki linklerin ayarları */
+nav a {
+    text-decoration: none; /* Alt çizgiyi kaldır */
+    color: #34495e; /* Link rengi */
+    font-weight: bold; /* Kalın yaz */
+    margin: 0 15px; /* Linklerin arasını aç */
+    font-size: 1.1rem;
+    transition: color 0.3s ease; /* Renk değişimi yumuşak olsun */
+}
+
+/* 5. Mause ile linkin üzerine gelince ne olsun? */
+nav a:hover {
+    color: #3498db; /* Açık maviye dönsün */
+}
+
+/* 6. Alt kısımdaki paragraf metni */
+p {
+    font-size: 1.2rem;
+    color: #7f8c8d; /* Daha hafif bir gri */
+    margin-top: 10px;
+}
