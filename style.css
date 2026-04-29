@@ -49,3 +49,20 @@ p {
     color: #7f8c8d; /* Daha hafif bir gri */
     margin-top: 10px;
 }
+/* Slider Alanı */
+.slider-container {
+    width: 80%;
+    max-width: 800px;
+    height: 400px;
+    overflow: hidden; /* Dışarı taşan resimleri gizle */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin: 20px 0;
+    position: relative;
+}
+
+.slider-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Resmi bozmadan kutuya sığdır */
+}
