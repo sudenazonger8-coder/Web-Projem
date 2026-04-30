@@ -1,4 +1,12 @@
-<section class="sehir-icerik">
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class="sehir-icerik">
     <h2>Sakarya: Doğanın ve Tarihin Buluştuğu Şehir</h2>
     
     <h3>Giriş</h3>
@@ -11,8 +19,34 @@ Tarihi açıdan da önemli bir yere sahip olan Sakarya, Sakarya Meydan Muharebes
 
 Sakarya’nın sosyal ve kültürel yapısında Sakarya Üniversitesi’nin de önemli bir etkisi vardır. Üniversite sayesinde şehirde genç ve dinamik bir nüfus bulunur. Bunun yanında Sakarya mutfağı da oldukça zengindir. Özellikle ıslama köfte, şehre özgü lezzetler arasında yer alır.</p>
 
-    <div class="slider-placeholder">[Sakarya Görselleri Buraya Gelecek]</div>
+  <div class="slider-container">
+    <div class="slides">
+        <img src="sakarya1.jpg" id="slide-img">
+    </div>
+    <div class="slider-buttons">
+        <button onclick="geri()">Geri</button>
+        <button onclick="ileri()">İleri</button>
+    </div>
+</div>
 
     <h3>Sonuç</h3>
     <p>Sonuç olarak Sakarya; doğal güzellikleri, tarihi önemi, kültürel zenginliği ve gelişmiş yapısıyla Türkiye’nin yaşanabilir şehirlerinden biridir. Hem sakin bir yaşam sürmek isteyenler hem de doğayla iç içe vakit geçirmek isteyenler için ideal bir yerdir. Bu özellikleriyle Sakarya, her geçen gün daha fazla ilgi gören bir şehir olmaya devam etmektedir.</p>
 </section>
+<script>
+    let resimler = ["sakarya1.jpg", "sakarya2.jpg", "sakarya3.jpg", "sakarya4.jpg"];
+    let sira = 0;
+
+    function ileri() {
+        sira++;
+        if (sira >= resimler.length) sira = 0;
+        document.getElementById("slide-img").src = resimler[sira];
+    }
+
+    function geri() {
+        sira--;
+        if (sira < 0) sira = resimler.length - 1;
+        document.getElementById("slide-img").src = resimler[sira];
+    }
+</script>
+</body>
+</html>
