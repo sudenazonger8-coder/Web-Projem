@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="login-container">
+    <div class="login-box">
+        <h2>Giriş Yap</h2>
+        <form id="login-form" onsubmit="return loginKontrol(event)">
+            <div class="input-group">
+                <label>Kullanıcı Adı:</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="input-group">
+                <label>Şifre:</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit" class="login-btn">Giriş</button>
+            <p id="hata-mesaji" style="color: red; display: none;">Hatalı kullanıcı adı veya şifre!</p>
+        </form>
+    </div>
+</div>
+</body>
+</html>
