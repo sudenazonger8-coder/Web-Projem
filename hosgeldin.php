@@ -1,18 +1,18 @@
-<?php 
-    $no = isset($_GET['no']) ? $_GET['no'] : "Misafir"; 
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
-<html lang="tr">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Başarılı Giriş</title>
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div style="text-align: center; margin-top: 100px;">
-        <h1>Hoşgeldiniz <?php echo $no; ?></h1>
-        <p>Giriş işleminiz başarıyla tamamlandı.</p>
-        <a href="index.html" style="color: #3498db;">Ana Sayfaya Dön</a>
-    </div>
+    <h1>Hoşgeldiniz <?php echo $_SESSION['user']; ?></h1>
+    <p>Başarıyla giriş yaptınız</p>
+    <a href="index.html">Ana Sayfaya Dön</a>
 </body>
 </html>
