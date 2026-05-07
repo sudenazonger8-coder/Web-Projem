@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>İletişim - Web Projem</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+
+<div id="app" class="contact-container">
+    <h2>İletişim Formu</h2>
+    
+    <form id="contactForm">
+        <div class="form-group">
+            <input type="text" id="isim" v-model="form.isim" placeholder="Ad Soyad">
+        </div>
+
+        <div class="form-group">
+            <input type="email" id="email" v-model="form.email" placeholder="E-posta (orn@sakarya.edu.tr)">
+        </div>
+
+        <div class="form-group">
+            <input type="text" id="tel" v-model="form.tel" placeholder="Telefon (Sadece Rakam)">
+        </div>
+
+        <div class="form-group">
+    <label for="sehir">Bulunduğunuz Şehir:</label>
+    <select id="sehir" v-model="form.sehir">
+        <option value="">Şehir Seçiniz</option>
+            <option value="54">Sakarya</option>
+            <option value="34">İstanbul</option>
+            <option value="06">Ankara</option>
+            <option value="35">İzmir</option>
+            <option value="16">Bursa</option>
+            <option value="07">Antalya</option>
+        <option value="0">Diğer</option>
+    </select>
+</div>
+
+        <div class="form-group">
+            <input type="radio" v-model="form.cinsiyet" value="K"> Kadın
+            <input type="radio" v-model="form.cinsiyet" value="E"> Erkek
+        </div>
+
+        <div class="form-group">
+            <textarea id="mesaj" v-model="form.mesaj" placeholder="Mesajınız"></textarea>
+        </div>
+
+        <div class="button-group">
+            <button type="button" onclick="jsKontrol()">JS ile Denetle</button>
+            <button type="button" @click="vueKontrol">Vue.js ile Denetle</button>
+        </div>
+
+        <button type="reset" class="reset-btn">Formu Temizle</button>
+    </form>
+</div>
+
+<script>
+    // 1. YÖNTEM: JAVASCRIPT (Vanilla JS)
+    function jsKontrol() {
+        const isim = document.getElementById("isim").value;
+        const email = document.getElementById("email").value;
+        const tel = document.getElementById("tel").value;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (isim === "" || email === "" || tel === "") {
+            alert("JS Hatası: Lütfen tüm alanları doldurun!");
+        } else if (!emailRegex.test(email)) {
+            alert("JS Hatası: Geçersiz e-posta formatı!");
+        } else if (isNaN(tel)) {
+            alert("JS Hatası: Telefon sadece rakam olmalı!");
+        } else {
+            alert("JavaScript Kontrolü Başarılı! Veriler gönderilebilir.");
+        }
+    }
+
+    // 2. YÖNTEM: VUE.JS (Modern Framework)
+    const { createApp } = Vue;
+    createApp({
+        data() {
+            return {
+                form: {
+                    isim: '', email: '', tel: '', sehir: '', cinsiyet: '', mesaj: ''
+                }
+            }
+        },
+        methods: {
+            vueKontrol() {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!this.form.isim || !this.form.email || !this.form.tel) {
+                    alert("Vue Hatası: Alanlar boş bırakılamaz!");
+                } else if (!emailRegex.test(this.form.email)) {
+                    alert("Vue Hatası: E-posta yanlış!");
+                } else if (isNaN(this.form.tel)) {
+                    alert("Vue Hatası: Telefon rakam olmalı!");
+                } else {
+                    alert("Vue.js Kontrolü Başarılı! Veriler gönderilebilir.");
+                }
+            }
+        }
+    }).mount('#app');
+</script>
+
+</body>
+</html>
