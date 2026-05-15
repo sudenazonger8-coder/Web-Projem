@@ -13,7 +13,7 @@
 
     <div class="container-fluid">
 
-        <a href="hakkimda.html">Ana Sayfa</a>
+        <a href="index.html">Ana Sayfa</a>
         <a href="cv.html">CV</a>
         <a href="sehir.html">Şehrim</a>
         <a href="iletisim.html">İletişim</a>
