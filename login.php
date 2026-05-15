@@ -1,40 +1,64 @@
-<?php
-session_start();
-
-// Eğer form gönderildiyse kontrol et
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $sifre = $_POST['sifre'];
-
-    // Kendi numaranla değiştir kanki
-    if ($email == "b2412100001@sakarya.edu.tr" && $sifre == "b2412100001") {
-        $_SESSION['user'] = "b2412100001";
-        header("Location: hosgeldin.php");
-        exit();
-    } else {
-        $hata = "Hatalı giriş!";
-    }
-}
-?>
-
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Giriş Yap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="login-wrapper">
-        <div class="login-card">
-            <h2>Öğrenci Girişi</h2>
-            <form method="POST">
-                <input type="email" name="email" placeholder="Mail Adresi" required>
-                <input type="password" name="sifre" placeholder="Öğrenci No" required>
-                <button type="submit">Giriş Yap</button>
-            </form>
-            <?php if(isset($hata)) echo "<p style='color:red;'>$hata</p>"; ?>
-        </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+
+    <div class="container-fluid">
+
+        <a href="hakkimda.html">Ana Sayfa</a>
+        <a href="cv.html">CV</a>
+        <a href="sehir.html">Şehrim</a>
+        <a href="iletisim.html">İletişim</a>
+        <a href="ilgialanlarim.html">İlgi Alanlarım</a>
+        <a href="login.php">Login</a>
+        <a href="mirasimiz.html">Mirasımız</a>
+
     </div>
+
+</nav>
+    <section class="login-page">
+
+    <h2>Giriş Yap</h2>
+
+    <form action="hosgeldin.php" method="POST" onsubmit="return loginKontrol()">
+
+        <input type="email" id="email" name="email" placeholder="Öğrenci maili">
+
+        <input type="password" id="password" name="sifre" placeholder="Şifre">
+
+        <button type="submit">Giriş Yap</button>
+
+    </form>
+
+    <p id="loginError"></p>
+
+</section>
+
+<script>
+function loginKontrol() {
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+
+    if (email === "" || password === "") {
+        document.getElementById("loginError").innerText = "Alanlar boş bırakılamaz.";
+        return false;
+    }
+
+    if (!email.includes("@") || !email.endsWith("@sakarya.edu.tr")) {
+        document.getElementById("loginError").innerText = "Geçerli bir Sakarya Üniversitesi maili giriniz.";
+        return false;
+    }
+
+    return true;
+}
+</script>
 </body>
 </html>

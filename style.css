@@ -1,219 +1,558 @@
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern ve okunaklı bir yazı tipi */
-    background-color: #f4f7f6; /* Gözü yormayan hafif gri bir arka plan */
-    color: #333; /* Ana yazı rengi (tam siyah değil, daha yumuşak) */
+/* İndex sayfası*/
+*{
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Her şeyi yatayda ortala */
-    min-height: 100vh; /* En az ekran boyu kadar yükseklik */
-    justify-content: center; /* Her şeyi dikeyde de ortala */
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* 2. Ana başlık (Hoşgeldin) ayarları */
-h1 {
-    color: #2c3e50; /* Koyu lacivert, profesyonel bir renk */
-    font-size: 3rem; /* Başlığı büyüt */
-    margin-bottom: 10px; /* Alttaki menüyle arasını aç */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Hafif gölge ile derinlik ver */
-}
-
-/* 3. Menü (Navigasyon) çubuğu ayarları */
-nav {
-    background-color: #fff; /* Menü arka planı beyaz olsun */
-    padding: 15px 30px; /* İçeriden boşluk ver */
-    border-radius: 50px; /* Köşeleri tam yuvarla (oval menü) */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Hafif gölge ile havada duruyormuş gibi yap */
-    margin-bottom: 20px; /* Alttaki metinle arasını aç */
-}
-
-/* 4. Menü içindeki linklerin ayarları */
-nav a {
-    text-decoration: none; /* Alt çizgiyi kaldır */
-    color: #34495e; /* Link rengi */
-    font-weight: bold; /* Kalın yaz */
-    margin: 0 15px; /* Linklerin arasını aç */
-    font-size: 1.1rem;
-    transition: color 0.3s ease; /* Renk değişimi yumuşak olsun */
-}
-
-/* 5. Mause ile linkin üzerine gelince ne olsun? */
-nav a:hover {
-    color: #3498db; /* Açık maviye dönsün */
-}
-
-/* 6. Alt kısımdaki paragraf metni */
-p {
-    font-size: 1.2rem;
-    color: #7f8c8d; /* Daha hafif bir gri */
-    margin-top: 10px;
-}
-.slider-container {
-    width: 100%;
-    max-width: 800px; /* Genişliği sabitledik */
-    height: 500px;    /* Yüksekliği de sabitledik */
-    margin: 20px auto;
-    overflow: hidden; /* Çerçevenin dışına taşan kısımları gizler */
-    position: relative;
-    border: 5px solid #fff;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    border-radius: 15px;
-}
-
-#slide-img {
-    width: 100%;
-    height: 100%;     /* Konteynırın yüksekliğine tam uysun */
-    object-fit: cover; /* Resmi sündürmeden, en uygun şekilde çerçeveye yayar */
-    display: block;
-}
-
-.slider-buttons {
-    position: absolute; /* Resmin üzerine binmesi için */
-    bottom: 8px;       /* Alttan 20px yukarıda */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;        /* En üstte görünmesi için kritik! */
-}
-
-.slider-buttons button {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0 10px;
-}
-
-.slider-buttons button:hover {
-    background-color: #2980b9; /* Üzerine gelince biraz koyulaşır */
-}
-async function havaGetir() {
-    const response = await fetch("https://api.openweathermap.org/data/2.5/weather?q=Sakarya&units=metric&lang=tr&appid=YOUR_API_KEY");
-    const data = await response.json();
-    document.getElementById("derece").innerText = data.main.temp + "°C - " + data.weather[0].description;
-}
-havaGetir();
-.hava-durumu-kart {
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 15px;
-    padding: 15px;
-    margin: 20px auto;
-    width: fit-content;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f7f1f0;
     text-align: center;
-}
-#derece {
-    font-size: 24px;
-    font-weight: bold;
-    display: block;
-}
-#durum {
-    color: #555;
-    font-style: italic;
-}
-#contact-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
-    margin: 0 auto;
-    gap: 15px;
+    padding-top: 100px;
 }
 
-#contact-form input, #contact-form textarea {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-family: inherit;
+/* Başlık */
+.container h1{
+    color: #8b5e5e;
+    margin-bottom: 40px;
+    font-size: 42px;
 }
 
-#contact-form button {
-    background-color: #3498db;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-
-#contact-form button:hover {
-    background-color: #2980b9;
-}
-.gunun-sozu-bandi {
-    background: linear-gradient(90deg, #3498db, #2980b9);
-    color: white;
-    padding: 15px 0;
-    text-align: center;
-    font-style: italic;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.soz-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-#soz-yazari {
-    display: block;
-    font-size: 0.8rem;
-    margin-top: 5px;
-    font-weight: bold;
-    text-transform: uppercase;
-    opacity: 0.8;
-}
-.login-container {
-    height: 80vh;
+/* Menü */
+nav{
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-.login-box {
-    background: white;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    width: 350px;
+/* Linkler */
+nav a{
+    text-decoration: none;
+    background-color: #d8b4b4;
+    color: white;
+    padding: 15px 28px;
+    border-radius: 12px;
+    transition: 0.3s;
+    font-size: 18px;
+}
+
+/* Hover efekti */
+nav a:hover{
+    background-color: #c89b9b;
+    transform: scale(1.05);
+}
+
+/* Genel Sayfa */
+
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f7f1f0;
+    color: #5c4b4b;
+    margin: 0;
+    padding: 0;
+}
+
+/* Menü */
+
+nav{
+    background-color: #d8b4b4;
+    padding: 20px;
     text-align: center;
 }
 
-.input-group {
+nav a{
+    text-decoration: none;
+    color: white;
+    margin: 0 15px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+nav a:hover{
+    color: #ffecec;
+}
+
+/* İçerik */
+
+.container{
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    background-color: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.container h1{
+    color: #b07d7d;
     margin-bottom: 20px;
-    text-align: left;
 }
 
-.input-group input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.container h2{
+    margin-top: 30px;
+    color: #b07d7d;
 }
 
-.login-btn {
-    width: 100%;
-    padding: 12px;
-    background-color: #3498db;
+/* Liste */
+
+ul{
+    list-style-position: inside;
+    margin-top: 15px;
+}
+
+li{
+    margin: 10px 0;
+}
+
+/* Slider */
+
+.slider{
+    width: 700px;
+    height: 450px;
+    overflow: hidden;
+    margin: 40px auto;
+    position: relative;
+    border-radius: 15px;
+}
+
+.slides{
+    display: flex;
+    transition: transform 0.5s ease;
+}
+.slides img{
+    width: 700px;
+    height: 450px;
+    object-fit: cover;
+}
+
+/* Butonlar */
+
+.prev,
+.next{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(216,180,180,0.8);
     color: white;
     border: none;
-    border-radius: 5px;
+    padding: 12px 16px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 20px;
+    border-radius: 50%;
 }
-.contact-container {
-    max-width: 500px;
-    margin: 50px auto;
+
+.prev{
+    left: 10px;
+}
+
+.next{
+    right: 10px;
+}
+
+.prev:hover,
+.next:hover{
+    background-color: #b07d7d;
+}
+
+/* Telefon uyumu */
+
+@media(max-width:768px){
+
+    .container{
+        width: 90%;
+    }
+
+    .slider{
+        width: 90%;
+        height: auto;
+    }
+
+   .slides img{
+    width: 100%;
+    height: 450px;
+    object-fit: contain;
+    background-color: #f7f1f0;
+    border-radius: 15px;
+}
+}
+/* Şehir Sayfası */
+
+.sehir-icerik{
+    width: 80%;
+    margin: 40px auto;
+    background-color: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    line-height: 1.8;
+}
+
+/* Başlıklar */
+
+.sehir-icerik h2{
+    text-align: center;
+    color: #b07d7d;
+    margin-bottom: 25px;
+}
+
+.sehir-icerik h3{
+    color: #c49090;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+/* Slider */
+
+.slider-container{
+    width: 700px;
+    margin: 35px auto;
+    text-align: center;
+}
+
+.slider-container img{
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Butonlar */
+
+.slider-buttons{
+    margin-top: 15px;
+}
+
+.slider-buttons button{
+    background-color: #d8b4b4;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    margin: 0 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.slider-buttons button:hover{
+    background-color: #b07d7d;
+}
+
+/* Hava Durumu Kartı */
+
+.hava-durumu-kart{
+    width: 300px;
+    margin: 35px auto;
+    background-color: #f7eaea;
     padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
-.form-group { margin-bottom: 15px; }
-input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
-.button-group { display: flex; gap: 10px; margin-bottom: 10px; }
-button { flex: 1; padding: 10px; cursor: pointer; background: #3498db; color: white; border: none; border-radius: 4px; }
-.reset-btn { background: #e74c3c; width: 100%; }
+
+.hava-durumu-kart h3{
+    margin-bottom: 15px;
+    color: #a06c6c;
+}
+
+#hava-icerik{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#derece{
+    font-size: 35px;
+    font-weight: bold;
+    color: #8b5e5e;
+}
+
+#durum{
+    color: #7a6666;
+    font-size: 18px;
+}
+
+/* Telefon Uyumu */
+
+@media(max-width:768px){
+
+    .sehir-icerik{
+        width: 90%;
+        padding: 20px;
+    }
+
+    .slider-container{
+        width: 100%;
+    }
+
+    .slider-container img{
+        height: auto;
+    }
+
+    .hava-durumu-kart{
+        width: 100%;
+    }
+}
+/* CV Sayfası */
+
+header{
+    background-color: #d8b4b4;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+header h1{
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+header p{
+    font-size: 18px;
+}
+
+/* Bölümler */
+
+section{
+    width: 80%;
+    margin: 30px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Başlıklar */
+
+section h2{
+    color: #b07d7d;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f1dada;
+    padding-bottom: 10px;
+}
+
+/* Article */
+
+article{
+    margin-bottom: 20px;
+}
+
+article h3{
+    color: #c49090;
+    margin-bottom: 10px;
+}
+
+/* Yazılar */
+
+article p{
+    margin-bottom: 8px;
+    color: #5c4b4b;
+    line-height: 1.6;
+}
+
+/* Yetenekler */
+
+.yetenek ul{
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.yetenek li{
+    background-color: #f3dede;
+    color: #7a5a5a;
+    padding: 10px 18px;
+    border-radius: 10px;
+}
+
+/* Telefon uyumu */
+
+@media(max-width:768px){
+
+    section{
+        width: 90%;
+        padding: 20px;
+    }
+
+    header h1{
+        font-size: 30px;
+    }
+
+    .yetenek ul{
+        justify-content: center;
+    }
+}
+/* İletişim Sayfası */
+
+.contact-container{
+    width: 450px;
+    margin: 50px auto;
+    background-color: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.contact-container h2{
+    text-align: center;
+    color: #b07d7d;
+    margin-bottom: 30px;
+}
+
+/* Form Grupları */
+
+.form-group{
+    margin-bottom: 20px;
+}
+
+/* Inputlar */
+
+input,
+select,
+textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e3caca;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+/* Focus Efekti */
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color: #d8b4b4;
+    box-shadow: 0 0 5px rgba(216,180,180,0.5);
+}
+
+/* Textarea */
+
+textarea{
+    height: 120px;
+    resize: none;
+}
+
+/* Radio */
+
+.form-group input[type="radio"]{
+    width: auto;
+    margin-right: 5px;
+}
+
+/* Butonlar */
+
+button{
+    background-color: #d8b4b4;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+button:hover{
+    background-color: #b07d7d;
+}
+
+/* İki Buton */
+
+.button-group{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Telefon Uyumu */
+
+@media(max-width:768px){
+
+    .contact-container{
+        width: 90%;
+        padding: 25px;
+    }
+
+    .button-group{
+        flex-direction: column;
+    }
+}
+.film-kart{
+    width: 320px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.film-kart img{
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.film-kart h2{
+    color: #b07d7d;
+    margin-bottom: 15px;
+}
+/* Film Kartı */
+
+.film-kart{
+    width: 320px;
+    margin: 50px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.film-kart img{
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.film-kart h2{
+    color: #b07d7d;
+    margin-bottom: 15px;
+}
+
+.film-kart h3{
+    color: #8b5e5e;
+    margin-bottom: 10px;
+}
+
+.film-kart p{
+    margin: 8px 0;
+    color: #6b5b5b;
+}
+/*İşlem sayfası*/
+.form-sonuc{
+    width: 500px;
+    margin: 50px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.form-sonuc h2{
+    color: #b07d7d;
+    margin-bottom: 20px;
+}
+
+.form-sonuc p{
+    margin: 12px 0;
+    color: #5c4b4b;
+}
